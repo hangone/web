@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>一种基于Web原生组件构建的 CTFer靶场 </title>
+    <link href="https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        #container {
+            height: 400px;
+            width: 400px;
+        }
+
+        .info {
+            width: 26rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <span>CTFer 靶场</span>
+            </a>
+
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="/pages/info.html" class="nav-link">信息发布</a></li>
+                <li class="nav-item"><a href="/pages/share.html" class="nav-link">资源共享</a></li>
+                <li class="nav-item"><a href="/pages/talk.html" class="nav-link">论坛交流</a></li>
+                <li class="nav-item"><a href="/pages/ctf.html" class="nav-link">CTF 训练</a></li>
+                <li class="nav-sitem"><a href="/pages/game.html" class="nav-link">安全比赛</a></li>
+            </ul>
+        </header>
+
+    </div>
+    <div class="w-100" id="container"></div>
+    <div class="info">
+        <h4 id="status"></h4>
+        <hr>
+        <p id="result"></p>
+    </div>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=6cafd918653ca4c925d3ea20363187ee"></script>
+    <script type="text/javascript">
+        var map = new AMap.Map('container', {
+            resizeEnable: true
+        });
+        AMap.plugin('AMap.Geolocation', function () {
+            var geolocation = new AMap.Geolocation({
+                enableHighAccuracy: true,//是否使用高精度定位，默认:true
+                timeout: 10000,          //超过10秒后停止定位，默认：5s
+                position: 'RB',    //定位按钮的停靠位置
+                offset: [10, 20], //定位按钮与设置的停靠位置的偏移量，默认：[10, 20]
+                zoomToAccuracy: true,   //定位成功后是否自动调整地图视野到定位点
+
+            });
+            map.addControl(geolocation);
+            geolocation.getCurrentPosition(function (status, result) {
+                if (status == 'complete') {
+                    onComplete(result)
+                } else {
+                    onError(result)
+                }
+            });
+        });
+        //解析定位结果
+        function onComplete(data) {
+            document.getElementById('status').innerHTML = '定位成功'
+            var str = [];
+            str.push('定位结果：' + data.position);
+            str.push('定位类别：' + data.location_type);
+            if (data.accuracy) {
+                str.push('精度：' + data.accuracy + ' 米');
+            }//如为IP精确定位结果则没有精度信息
+            str.push('是否经过偏移：' + (data.isConverted ? '是' : '否'));
+            document.getElementById('result').innerHTML = str.join('<br>');
+        }
+    </script>
+    <script src="https://unpkg.com/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

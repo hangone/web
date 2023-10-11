@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>一种基于Web原生组件构建的 CTFer靶场 </title>
+    <link href="https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <span>CTFer 靶场</span>
+            </a>
+
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="/pages/info.html" class="nav-link">信息发布</a></li>
+                <li class="nav-item"><a href="/pages/share.html" class="nav-link">资源共享</a></li>
+                <li class="nav-item"><a href="/pages/talk.html" class="nav-link">论坛交流</a></li>
+                <li class="nav-item"><a href="/pages/ctf.html" class="nav-link">CTF 训练</a></li>
+                <li class="nav-sitem"><a href="/pages/game.html" class="nav-link">安全比赛</a></li>
+            </ul>
+        </header>
+        <div class="row g-5">
+            <div class="col-md-8">
+                <article class="blog-post">
+                    <h2 class="display-5 link-body-emphasis mb-1">Typora 命令执行：CVE-2023-2317</h2>
+                    <p class="blog-post-meta">3 天前 by <a href="#">hangyi</a></p>
+                    <p>漏洞信息</p>
+                    <hr>
+                    <p>漏洞说明：低于 1.67 版本的 Typora 存在代码执行漏洞，通过在标签中加载 typora://app/typemark/updater/update.html 实现在 Typora 主窗口的上下文中运行任意 JavaScript 代码。</p>
+                </article>
+                <div class="p-4 mb-3 bg-body-tertiary rounded">
+                    <h4 class="fst-italic">来源</h4>
+                    <p class="mb-0">https://xz.aliyun.com/t/12822</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="position-sticky">
+                    <div class="p-4">
+                        <h4 class="fst-italic">其他</h4>
+                        <ol class="list-unstyled">
+                            <li><a href="#">GitHub</a></li>
+                            <li><a href="#">先知</a></li>
+                            <li><a href="#">知乎</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

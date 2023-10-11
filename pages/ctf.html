@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>一种基于Web原生组件构建的 CTFer靶场 </title>
+    <link href="https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <span>CTFer 靶场</span>
+            </a>
+
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="/pages/info.html" class="nav-link">信息发布</a></li>
+                <li class="nav-item"><a href="/pages/share.html" class="nav-link">资源共享</a></li>
+                <li class="nav-item"><a href="/pages/talk.html" class="nav-link">论坛交流</a></li>
+                <li class="nav-item"><a href="/pages/ctf.html" class="nav-link active" aria-current="page">CTF 训练</a></li>
+                <li class="nav-sitem"><a href="/pages/game.html" class="nav-link">安全比赛</a></li>
+            </ul>
+        </header>
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-md-3">
+                    <h4>类别</h4>
+                    <ul>
+                        <li><span class="btn btn-primary">WEB</span></li>
+                        <li><span class="btn">MISC</span></li>
+                        <li><span class="btn">CRYPTO</span></li>
+                        <li><span class="btn">PWN</span></li>
+                        <li><span class="btn">REVERSE</span></li>
+                        <li><span class="btn">电子取证</span></li>
+                    </ul>
+                </div>
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <img src="/images/PWN2OWN-Icon-Reverse-3C-large.png" class="card-img-top my-1 mx-auto w-50" role="button" onclick="window.location.href='/pages/ctf/video.html'">
+                                <div class="card-body d-flex flex-row align-items-center">
+                                    题目： PWN2OWN ??? </div>
+                                <div class="card-body d-flex flex-column align-items-end">
+                                    <input type="text" class="problem form-control" placeholder="请输入 flag" value="">
+                                    <button class="btn btn-primary mt-2" onclick="check(0)">提交</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <img src="/images/PWN2OWN-Icon-Reverse-3C-large.png" class="card-img-top my-1 mx-auto w-50" role="button" onclick="window.location.href='/pages/ctf/video.html'">
+                                <div class="card-body d-flex flex-row align-items-center">
+                                    题目： PWN2OWN ??? </div>
+                                <div class="card-body d-flex flex-column align-items-end">
+                                    <input type="text" class="problem form-control" placeholder="请输入 flag" value="">
+                                    <button class="btn btn-primary mt-2" onclick="check(1)">提交</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <img src="/images/PWN2OWN-Icon-Reverse-3C-large.png" class="card-img-top my-1 mx-auto w-50" role="button" onclick="window.location.href='/pages/ctf/video.html'">
+                                <div class="card-body d-flex flex-row align-items-center">
+                                    题目： PWN2OWN ??? </div>
+                                <div class="card-body d-flex flex-column align-items-end">
+                                    <input type="text" class="problem form-control" placeholder="请输入 flag" value="">
+                                    <button class="btn btn-primary mt-2" onclick="check(2)">提交</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <img src="/images/PWN2OWN-Icon-Reverse-3C-large.png" class="card-img-top my-1 mx-auto w-50" role="button" onclick="window.location.href='/pages/ctf/video.html'">
+                                <div class="card-body d-flex flex-row align-items-center">
+                                    题目： PWN2OWN ??? </div>
+                                <div class="card-body d-flex flex-column align-items-end">
+                                    <input type="text" class="problem form-control" placeholder="请输入 flag" value="">
+                                    <button class="btn btn-primary mt-2" onclick="check(3)">提交</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://unpkg.com/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+        <script>
+            let check = (id) => {
+                let input = document.getElementsByClassName("problem")[id].value;
+                flag = CryptoJS.MD5(id).toString();
+                // console.log(flag);
+                if (input === `flag{${flag}}`) {
+                    alert("Flag 正确！");
+                } else {
+                    alert("Flag 错误！");
+                } d41d8cd98f00b204e9800998ecf8427e
+            }
+        </script>
+</body>
+
+</html>
