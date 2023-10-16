@@ -1,61 +1,106 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+      name="viewport"
+    />
+    <meta content="ie=edge" http-equiv="X-UA-Compatible" />
+    <title>一种基于简单 Web 组件构建的 CTFer 靶场</title>
+    <link
+      href="https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
-    <meta content="ie=edge" http-equiv="X-UA-Compatible">
-    <title>一种基于Web原生组件构建的 CTFer靶场 </title>
-    <link href="https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-
-</head>
-
-<body>
+  <body>
     <div class="container">
-        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-                <span>CTFer 靶场</span>
-            </a>
-            <ul class="nav nav-pills">
-                <li class="nav-item"><a href="/pages/info.html" class="nav-link">信息发布</a></li>
-                <li class="nav-item"><a href="/pages/share.html" class="nav-link">资源共享</a></li>
-                <li class="nav-item"><a href="/pages/talk.html" class="nav-link">论坛交流</a></li>
-                <li class="nav-item"><a href="/pages/ctf.html" class="nav-link">CTF 训练</a></li>
-                <li class="nav-sitem"><a href="/pages/game.html" class="nav-link active" aria-current="page">安全比赛</a></li>
-            </ul>
-        </header>
-        <div id="carouselCaptions" class="carousel slide">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="/images/bg-banner.png" class="d-block w-100">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>CISCN 2023 来临</h5>
-                        <p>CISCN 2023 来临。CISCN 2023 来临。CISCN 2023 来临</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="/images/background.png" class="d-block w-100">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>CTF GAME</h5>
-                        <p>CTF GAME CTF GAME CTF GAME</p>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselCaptions" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselCaptions" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+      <header
+        class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom"
+      >
+        <a
+          href="/"
+          class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
+        >
+          <span>CTFer 靶场</span>
+        </a>
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a href="/pages/info.html" class="nav-link">信息发布</a>
+          </li>
+          <li class="nav-item">
+            <a href="/pages/share.html" class="nav-link">资源共享</a>
+          </li>
+          <li class="nav-item">
+            <a href="/pages/talk.html" class="nav-link">论坛交流</a>
+          </li>
+          <li class="nav-item">
+            <a href="/pages/ctf.html" class="nav-link">CTF 训练</a>
+          </li>
+          <li class="nav-sitem">
+            <a
+              href="/pages/game.html"
+              class="nav-link active"
+              aria-current="page"
+              >安全比赛</a
+            >
+          </li>
+        </ul>
+      </header>
+      <div id="carouselCaptions" class="carousel slide">
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselCaptions"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselCaptions"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
         </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="/images/bg-banner.png" class="d-block w-100" />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>CISCN 2023 来临</h5>
+              <p>CISCN 2023 来临。CISCN 2023 来临。CISCN 2023 来临</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="/images/background.png" class="d-block w-100" />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>CTF GAME</h5>
+              <p>CTF GAME CTF GAME CTF GAME</p>
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselCaptions"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselCaptions"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
     </div>
     <script src="https://unpkg.com/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-
+  </body>
 </html>
