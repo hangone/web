@@ -52,30 +52,54 @@
       <div class="container mt-4">
         <div class="row">
           <div class="col-md-3">
-            <h4>类别</h4>
-            <ul>
-              <li>
-                <span id="WEB" onclick="change('WEB')" class="btn btn-primary"
-                  >WEB</span
-                >
-              </li>
-              <li>
-                <span id="MISC" onclick="change('MISC')" class="btn">MISC</span>
-              </li>
-              <li>
-                <span id="CRYPTO" onclick="change('CRYPTO')" class="btn"
-                  >CRYPTO</span
-                >
-              </li>
-              <li>
-                <span id="PWN" onclick="change('PWN')" class="btn">PWN</span>
-              </li>
-              <li>
-                <span id="REVERSE" onclick="change('REVERSE')" class="btn"
-                  >REVERSE</span
-                >
-              </li>
-            </ul>
+            <div>
+              <h4>类别</h4>
+              <ul>
+                <li>
+                  <span id="WEB" onclick="change('WEB')" class="btn btn-primary"
+                    >WEB</span
+                  >
+                </li>
+                <li>
+                  <span id="MISC" onclick="change('MISC')" class="btn"
+                    >MISC</span
+                  >
+                </li>
+                <li>
+                  <span id="CRYPTO" onclick="change('CRYPTO')" class="btn"
+                    >CRYPTO</span
+                  >
+                </li>
+                <li>
+                  <span id="PWN" onclick="change('PWN')" class="btn">PWN</span>
+                </li>
+                <li>
+                  <span id="REVERSE" onclick="change('REVERSE')" class="btn"
+                    >REVERSE</span
+                  >
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4>排名</h4>
+              <ol>
+                <li id="name-1">
+                  <span id="name-1-id">名字一</span>
+                  <span id="name-1-score">300</span>
+                  <span>分</span>
+                </li>
+                <li id="name-2">
+                  <span id="name-2-id">名字二</span>
+                  <span id="name-2-score">300</span>
+                  <span>分</span>
+                </li>
+                <li id="name-3">
+                  <span id="name-3-id">名字三</span>
+                  <span id="name-3-score">300</span>
+                  <span>分</span>
+                </li>
+              </ol>
+            </div>
           </div>
           <div class="col-md-9">
             <div class="row" id="row"></div>
@@ -103,10 +127,13 @@
         //   });
 
         hashed = CryptoJS.MD5(input).toString();
-        if (input === flag) {
+        if (hashed === flag) {
+          let score = document.getElementById("name-1-score")
+          score.innerText = 100 + parseInt(score.innerText);
           alert("Flag 正确！");
         } else {
           alert("Flag 错误！");
+          console.log(hashed);
         }
       };
 
