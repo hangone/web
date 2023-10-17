@@ -1,57 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
-    <meta content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+      name="viewport"
+    />
+    <meta content="ie=edge" />
     <title>一种基于简单 Web 组件构建的 CTFer 靶场</title>
-    <link href="https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-</head>
+    <link
+      href="https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-                <span>CTFer 靶场</span>
-            </a>
-        </header>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center mt-5">
-                    <h1 id="hitokoto"></h1>
-                </div>
-                <div class="col-md-12 text-center mt-5">
-                    <h1>页面将在 <span id="countdown">5</span> 秒后跳转</h1>
-                </div>
-            </div>
+      <header
+        class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom"
+      >
+        <a
+          href="/"
+          class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
+        >
+          <span>CTFer 靶场</span>
+        </a>
+      </header>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center mt-5">
+            <h1 id="hitokoto"></h1>
+          </div>
+          <div class="col-md-12 text-center mt-5">
+            <h1>页面将在 <span id="countdown">5</span> 秒后跳转</h1>
+          </div>
         </div>
+      </div>
     </div>
 
     <script src="https://unpkg.com/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     <script>
-        axios.get('https://v1.hitokoto.cn')
-            .then((response) => {
-                console.log(response);
-                document.getElementById('hitokoto').textContent = `${response.data.hitokoto} -- ${response.data.from}`;
-            });
+      axios.get("https://v1.hitokoto.cn").then((response) => {
+        console.log(response);
+        document.getElementById(
+          "hitokoto"
+        ).textContent = `${response.data.hitokoto} -- ${response.data.from}`;
+      });
 
-        let countdown = 5;
+      let countdown = 5;
+      console.log(countdown);
+      let updateCountdown = () => {
         console.log(countdown);
-        let updateCountdown = () => {
-            console.log(countdown);
-            document.getElementById('countdown').textContent = countdown;
+        document.getElementById("countdown").textContent = countdown;
 
-            if (countdown <= 1) {
-                window.location.href = '/pages/info.html';
-            } else {
-                setTimeout(updateCountdown, 1000)
-            }
-            countdown -= 1;
+        if (countdown <= 1) {
+          window.location.href = "/pages/info.html";
+        } else {
+          setTimeout(updateCountdown, 1000);
         }
-        updateCountdown();
+        countdown -= 1;
+      };
+      updateCountdown();
     </script>
-</body>
-
+  </body>
 </html>

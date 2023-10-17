@@ -14,8 +14,8 @@
     />
   </head>
 
-  <body>
-    <div class="container">
+  <body class="vh-100">
+    <div class="container h-100">
       <header
         class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom"
       >
@@ -47,7 +47,8 @@
         <div>
           <h1 class="display-4 fst-italic text-danger">最新公告</h1>
           <p class="lead my-3 alert alert-success">
-            很不幸地通知大家，具体通知什么我忘了。
+            flag 的格式是 <code>flag{}</code>，例如
+            <code>flag{this_is_fake_flag}</code>
           </p>
           <p class="lead mb-0">
             <a href="#" class="text-body-emphasis fw-bold">BTW...</a>
@@ -55,18 +56,78 @@
         </div>
       </div>
       <div
-        class="text-bg-dark pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden rounded-top"
+        class="text-bg-dark h-50 p-3 p-md-3 text-center overflow-hidden rounded-top"
       >
-        <div class="my-3 py-3">
-          <h2 class="display-5">无</h2>
-          <p class="lead">Undefined</p>
-        </div>
-        <div
-          class="bg-body-tertiary shadow-sm mx-auto rounded-top"
-          style="width: 80%; height: 300px"
-        ></div>
+        <canvas
+          id="canvas"
+          class="w-100 h-100 bg-body-tertiary shadow-sm mx-auto rounded"
+        ></canvas>
       </div>
     </div>
+    <script>
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+      const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
+      const vertices = [
+        [-30, -30, -30],
+        [30, -30, -30],
+        [30, 30, -30],
+        [-30, 30, -30],
+        [-30, -30, 30],
+        [30, -30, 30],
+        [30, 30, 30],
+        [-30, 30, 30],
+      ];
+
+      const edges = [
+        [0, 1, 2, 3],
+        [4, 5, 6, 7],
+        [0, 4],
+        [1, 5],
+        [2, 6],
+        [3, 7],
+      ];
+
+      let X = 0;
+      let Y = 0;
+      let speed = 0.01;
+
+      const animate = () => {
+        X += speed;
+        Y += speed;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (const e of edges) {
+          ctx.beginPath();
+          for (const i of e) {
+            const [x, y, z] = vertices[i];
+
+            const x2d = x * Math.cos(Y) - z * Math.sin(Y);
+            const z2d = x * Math.sin(Y) + z * Math.cos(Y);
+
+            const y2d = y * Math.cos(X) - z2d * Math.sin(X);
+            const z3d = y * Math.sin(X) + z2d * Math.cos(X);
+
+            const scale = 400 / (z3d + 400);
+            const screenX = centerX + x2d * scale;
+            const screenY = centerY + y2d * scale;
+
+            if (i === e[0]) {
+              ctx.moveTo(screenX, screenY);
+            } else {
+              ctx.lineTo(screenX, screenY);
+            }
+          }
+          ctx.closePath();
+          ctx.stroke();
+        }
+        requestAnimationFrame(animate);
+      };
+
+      animate();
+    </script>
+
     <script src="https://unpkg.com/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

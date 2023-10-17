@@ -216,20 +216,16 @@
     <script src="https://unpkg.com/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
       const mouse = document.getElementById("mouse");
-
       document.addEventListener("mousemove", (e) => {
-        const newFollower = document.createElement("div");
-        newFollower.className =
-          "position-fixed rounded-circle bg-primary pe-none";
-        newFollower.style.width = "20px";
-        newFollower.style.height = "20px";
-        newFollower.style.left = e.clientX + "px";
-        newFollower.style.top = e.clientY + "px";
-
-        mouse.appendChild(newFollower);
-
+        const newMouse = document.createElement("div");
+        newMouse.className = "position-fixed rounded-circle bg-primary pe-none";
+        newMouse.style.width = "20px";
+        newMouse.style.height = "20px";
+        newMouse.style.left = e.clientX + "px";
+        newMouse.style.top = e.clientY + "px";
+        mouse.appendChild(newMouse);
         setTimeout(() => {
-          mouse.removeChild(newFollower);
+          mouse.removeChild(newMouse);
         }, 100);
       });
     </script>
