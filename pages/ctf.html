@@ -54,113 +54,31 @@
           <div class="col-md-3">
             <h4>类别</h4>
             <ul>
-              <li><span class="btn btn-primary">WEB</span></li>
-              <li><span class="btn">MISC</span></li>
-              <li><span class="btn">CRYPTO</span></li>
-              <li><span class="btn">PWN</span></li>
-              <li><span class="btn">REVERSE</span></li>
-              <li><span class="btn">电子取证</span></li>
+              <li>
+                <span id="WEB" onclick="change('WEB')" class="btn btn-primary"
+                  >WEB</span
+                >
+              </li>
+              <li>
+                <span id="MISC" onclick="change('MISC')" class="btn">MISC</span>
+              </li>
+              <li>
+                <span id="CRYPTO" onclick="change('CRYPTO')" class="btn"
+                  >CRYPTO</span
+                >
+              </li>
+              <li>
+                <span id="PWN" onclick="change('PWN')" class="btn">PWN</span>
+              </li>
+              <li>
+                <span id="REVERSE" onclick="change('REVERSE')" class="btn"
+                  >REVERSE</span
+                >
+              </li>
             </ul>
           </div>
           <div class="col-md-9">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="card mb-3">
-                  <img
-                    class="card-img-top my-1 mx-auto w-50"
-                    onclick="window.location.href='/pages/ctf/video.html'"
-                    role="button"
-                    src="/images/PWN2OWN-Icon-Reverse-3C-large.png"
-                  />
-                  <div class="card-body d-flex flex-row align-items-center">
-                    题目： PWN2OWN ???
-                  </div>
-                  <div class="card-body d-flex flex-column align-items-end">
-                    <input
-                      class="problem form-control"
-                      placeholder="请输入 flag"
-                      type="text"
-                      value=""
-                    />
-                    <button class="btn btn-primary mt-2" onclick="check(0)">
-                      提交
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="card mb-3">
-                  <img
-                    class="card-img-top my-1 mx-auto w-50"
-                    onclick="window.location.href='/pages/ctf/video.html'"
-                    role="button"
-                    src="/images/PWN2OWN-Icon-Reverse-3C-large.png"
-                  />
-                  <div class="card-body d-flex flex-row align-items-center">
-                    题目： PWN2OWN ???
-                  </div>
-                  <div class="card-body d-flex flex-column align-items-end">
-                    <input
-                      class="problem form-control"
-                      placeholder="请输入 flag"
-                      type="text"
-                      value=""
-                    />
-                    <button class="btn btn-primary mt-2" onclick="check(1)">
-                      提交
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="card mb-3">
-                  <img
-                    class="card-img-top my-1 mx-auto w-50"
-                    onclick="window.location.href='/pages/ctf/video.html'"
-                    role="button"
-                    src="/images/PWN2OWN-Icon-Reverse-3C-large.png"
-                  />
-                  <div class="card-body d-flex flex-row align-items-center">
-                    题目： PWN2OWN ???
-                  </div>
-                  <div class="card-body d-flex flex-column align-items-end">
-                    <input
-                      class="problem form-control"
-                      placeholder="请输入 flag"
-                      type="text"
-                      value=""
-                    />
-                    <button class="btn btn-primary mt-2" onclick="check(2)">
-                      提交
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="card mb-3">
-                  <img
-                    class="card-img-top my-1 mx-auto w-50"
-                    onclick="window.location.href='/pages/ctf/video.html'"
-                    role="button"
-                    src="/images/PWN2OWN-Icon-Reverse-3C-large.png"
-                  />
-                  <div class="card-body d-flex flex-row align-items-center">
-                    题目： PWN2OWN ???
-                  </div>
-                  <div class="card-body d-flex flex-column align-items-end">
-                    <input
-                      class="problem form-control"
-                      placeholder="请输入 flag"
-                      type="text"
-                      value=""
-                    />
-                    <button class="btn btn-primary mt-2" onclick="check(3)">
-                      提交
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div class="row" id="row"></div>
           </div>
         </div>
       </div>
@@ -168,16 +86,131 @@
     <script src="https://unpkg.com/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <script>
-      let check = (id) => {
-        let input = document.getElementsByClassName("problem")[id].value;
-        let flag = CryptoJS.MD5(id).toString();
-        console.log(flag);
-        if (input === `flag{${flag}}`) {
+      const check = (id, flag) => {
+        let input = CryptoJS.MD5(document.getElementById(id).value).toString();
+        console.log(input);
+        if (input === flag) {
           alert("Flag 正确！");
         } else {
           alert("Flag 错误！");
         }
       };
+
+      const problems = {
+        WEB: [
+          {
+            id: 1,
+            title: "PWN2OWN ???",
+            category: "PWN",
+            url: "/pages/ctf/video.html",
+            flag: "29f185e009775a24cea19752004bbb2b", // flag{???}
+            score: 100,
+          },
+          {
+            id: 2,
+            title: "???",
+            category: "PWN",
+            url: "/pages/ctf/video.html",
+            flag: "9dba6f1459dd1cd582d56fe3de8ae5ea", // flag{123}
+            score: 300,
+          },
+          {
+            id: 3,
+            title: "PWN2OWN",
+            category: "PWN",
+            url: "/pages/ctf/video.html",
+            flag: "9dba6f1459dd1cd582d56fe3de8ae5ea", // flag{123}
+            score: 200,
+          },
+          {
+            id: 4,
+            title: "PWN?",
+            category: "PWN",
+            url: "/pages/ctf/video.html",
+            flag: "9dba6f1459dd1cd582d56fe3de8ae5ea", // flag{123}
+            score: 10,
+          },
+        ],
+        MISC: [
+          {
+            id: 1,
+            title: "我是 MISC",
+            category: "MISC",
+            url: "/pages/ctf/video.html",
+            flag: "29f185e009775a24cea19752004bbb2b", // flag{???}
+            score: 100,
+          },
+          {
+            id: 2,
+            title: "我是 MISC x2",
+            category: "MISC",
+            url: "/pages/ctf/video.html",
+            flag: "9dba6f1459dd1cd582d56fe3de8ae5ea", // flag{123}
+            score: 300,
+          },
+          {
+            id: 3,
+            title: "PWN2OWN",
+            category: "MISC",
+            url: "/pages/ctf/video.html",
+            flag: "9dba6f1459dd1cd582d56fe3de8ae5ea", // flag{123}
+            score: 200,
+          },
+          {
+            id: 4,
+            title: "PWN?",
+            category: "MISC",
+            url: "/pages/ctf/video.html",
+            flag: "9dba6f1459dd1cd582d56fe3de8ae5ea", // flag{123}
+            score: 10,
+          },
+        ],
+      };
+
+      list = JSON.stringify(problems);
+
+      let last = "WEB";
+      const change = (t) => {
+        let row = document.getElementById("row");
+        row.innerHTML = "";
+        let label = document.getElementById(last);
+        label.classList.remove("btn-primary");
+        let labelNew = document.getElementById(t);
+        labelNew.classList.add("btn-primary");
+        last = t;
+
+        for (const j of problems[t]) {
+          const newProblem = document.createElement("div");
+          newProblem.className = "col-md-6";
+          newProblem.innerHTML = `
+                <div class="card mb-3">
+                  <img
+                    class="card-img-top my-1 mx-auto w-50"
+                    onclick="window.location.href='${j.url}'"
+                    role="button"
+                    src="/images/PWN2OWN-Icon-Reverse-3C-large.png"
+                  />
+                  <div class="card-body d-flex flex-row align-items-center">
+                    题目： ${j.title}
+                  </div>
+                  <div class="card-body d-flex flex-column align-items-end">
+                    <input
+                      class="problem form-control"
+                      placeholder="请输入 flag"
+                      type="text"
+                      id="${j.id}"
+                      value=""
+                    />
+                    <button class="btn btn-primary mt-2" onclick="check(${j.id}, '${j.flag}')">
+                      提交
+                    </button>
+                  </div>
+                </div>
+            `;
+          row.appendChild(newProblem);
+        }
+      };
+      change("WEB");
     </script>
   </body>
 </html>
