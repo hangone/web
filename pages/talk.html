@@ -62,21 +62,38 @@
           Submit
         </button>
       </div>
-      <ul class="list-group" id="list">
-        <li class="list-group-item">
-          <div class="ms-2 me-auto">
-            <i class="btn btn-secondary">?</i>
-            求助，如何在 Arch Linux 中安装 ciphey？
-            <span class="badge bg-primary rounded-pill"
-              >10/17/2023, 1:13:12 PM</span
-            >
-          </div>
-        </li>
-      </ul>
+      <ul class="list-group" id="list"></ul>
     </div>
 
     <script src="https://unpkg.com/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+      let list = localStorage.getItem("list");
+      if (list === null || list.length === 0) {
+        let v = [
+          {
+            title: "求助，如何在 Arch Linux 中安装 ciphey？",
+            time: "10/17/2023, 1:13:12 PM",
+          },
+        ];
+        localStorage.setItem("list", JSON.stringify(v));
+      }
+
+      list = JSON.parse(localStorage.getItem("list"));
+
+      for (const i of list) {
+        const newTitle = document.createElement("li");
+        newTitle.className = "list-group-item";
+        const time = new Date().toLocaleString();
+        newTitle.innerHTML = `
+            <div class="ms-2 me-auto">
+                <i class="btn btn-secondary">?</i>
+                ${i.title}
+                <span class="badge bg-primary rounded-pill">${i.time}</span>
+            </div>
+            `;
+        document.getElementById("list").appendChild(newTitle);
+      }
+
       const addTitle = () => {
         const title = document.getElementById("inputText").value;
         const newTitle = document.createElement("li");
@@ -90,6 +107,11 @@
             </div>
             `;
         document.getElementById("list").appendChild(newTitle);
+
+        let newList = { title: title, time: time };
+        let l = JSON.parse(localStorage.getItem("list"));
+        l.push(newList);
+        localStorage.setItem("list", JSON.stringify(l));
       };
     </script>
   </body>
